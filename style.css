@@ -1,0 +1,29 @@
+
+@font-face {
+    font-family: geist;
+    src: url(./fonts/Geist-Regular.otf);
+    font-weight: regular;
+}
+
+@font-face {
+    font-family: geist;
+    src: url(./fonts/Geist-Light.otf);
+    font-weight: light;
+}
+
+@font-face {
+    font-family: geist;
+    src: url(./fonts/Geist-Bold.otf);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: geist;
+    src: url(./fonts/Geist-Black.otf);
+    font-weight: black;
+}
+
+body {
+    font-family: geist;
+}
+
