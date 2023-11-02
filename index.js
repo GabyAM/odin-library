@@ -48,8 +48,18 @@ $form.addEventListener('submit', (event) => {
     event.preventDefault();
 })
 
+const $formExitButton = document.querySelector('.form-exit-button');
 const $button = document.querySelector('.open-sidebar-button');
 $button.addEventListener('click', () => {
-    document.querySelector('aside').style.width = '50%';
+    document.querySelector('aside').classList.add('open');
+    setTimeout(() => {
+        $formExitButton.style.visibility = 'visible';
+    }, 600)
     $button.disabled = true;
+})
+
+$formExitButton.addEventListener('click', () => {
+    document.querySelector('aside').classList.remove('open');
+    $button.disabled = false;
+    $formExitButton.style.visibility = 'hidden';
 })
