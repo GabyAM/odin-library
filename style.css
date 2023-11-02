@@ -1,3 +1,7 @@
+* {
+    margin: 0;
+    padding: 0;
+}
 
 @font-face {
     font-family: geist;
@@ -24,6 +28,20 @@
 }
 
 body {
+    background-color: #edf2f4;
     font-family: geist;
+}
+
+header {
+    background: linear-gradient(to right, #e74054 ,#a5001c);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 100px;
+}
+
+header .material-symbols-outlined {
+    font-size: 36px;
 }
 
