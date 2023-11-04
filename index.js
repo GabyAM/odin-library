@@ -6,27 +6,73 @@ function Book (title, author, pages, read) {
     this.pages = pages;
     this.read = read;
 
-    function info() {
+    this.info = function() {
         return `${title} by ${author}, ${pages} pages, ${read ? 'read' : 'not read yet'}`
+    }
+
+    this.toggleRead = function () {
+        this.read = !this.read;
     }
 } 
 
+function createDeleteButton() {
+    const $deleteButton = document.createElement('button');
+    const $deleteIcon = document.createElement('span');
+    $deleteIcon.className = 'material-symbols-outlined';
+    $deleteIcon.textContent = 'delete'
+    $deleteButton.appendChild($deleteIcon);
+    $deleteButton.addEventListener('click', () => {
+        const index = $deleteButton.parentElement.dataset.arrayIndex;
+        books.splice(index, 1);
+        renderLibrary()
+    })
+    return $deleteButton;
+}
+
+function createReadButton(book) {
+    const $read = document.createElement('button');
+    if(book.read) {
+        $read.textContent = 'read';
+        $read.className = 'read-button green'
+    } else {
+        $read.textContent = 'not read';
+        $read.className = 'read-button red'
+    }
+    $read.addEventListener('click', () => {
+            book.toggleRead()
+            renderLibrary()
+        }
+    )
+    return $read;
+}
+
+function createBookElement(book) {
+    const $card = document.createElement('div');
+    $card.className = 'book-card';
+    const $title = document.createElement('h3');
+    $title.textContent = book.title;
+    const $author = document.createElement('span');
+    $author.textContent = `by ${book.author}`;
+    const $pages = document.createElement('span');
+    $pages.textContent = `${book.pages} pages`;
+
+    const $read = createReadButton(book);
+    const $deleteButton = createDeleteButton()
+
+    $card.appendChild($title);
+    $card.appendChild($author);
+    $card.appendChild($pages);
+    $card.appendChild($read);
+    $card.appendChild($deleteButton);
+    $card.dataset.arrayIndex = books.indexOf(book);
+
+    document.querySelector('.books-grid').appendChild($card);
+}
+
 function renderLibrary() {
+    document.querySelector('.books-grid').innerHTML = '';
     books.forEach(book => {
-        const $tableRow = document.createElement('tr');
-        const $titleCell = document.createElement('td');
-        $titleCell.textContent = book.title;
-        const $authorCell = document.createElement('td');
-        $authorCell.textContent = book.author
-        const $pagesCell = document.createElement('td');
-        $pagesCell.textContent = book.pages;
-        const $readCell = document.createElement('td');
-        $readCell.textContent = book.read;
-        $tableRow.appendChild($titleCell);
-        $tableRow.appendChild($authorCell);
-        $tableRow.appendChild($pagesCell);
-        $tableRow.appendChild($readCell);
-        document.querySelector('tbody').appendChild($tableRow);
+         createBookElement(book);
     })
 }
 
@@ -63,3 +109,12 @@ $formExitButton.addEventListener('click', () => {
     $button.disabled = false;
     $formExitButton.style.visibility = 'hidden';
 })
+
+
+const book1 = new Book('The hobbit', 'George R.R. Martin', 9001 , false)
+const book2 = new Book('I, Robot', 'Isaac Asimov', 329 , true)
+const book3 = new Book('Atomic Habits', 'James Clear', 350 , false)
+books.push(book1);
+books.push(book2);
+books.push(book3);
+renderLibrary();

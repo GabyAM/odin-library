@@ -4,27 +4,10 @@
 }
 
 @font-face {
-    font-family: geist;
-    src: url(./fonts/Geist-Regular.otf);
-    font-weight: regular;
-}
-
-@font-face {
-    font-family: geist;
-    src: url(./fonts/Geist-Light.otf);
-    font-weight: light;
-}
-
-@font-face {
-    font-family: geist;
-    src: url(./fonts/Geist-Bold.otf);
-    font-weight: bold;
-}
-
-@font-face {
-    font-family: geist;
-    src: url(./fonts/Geist-Black.otf);
-    font-weight: black;
+    font-family: 'geist';
+    font-style: normal;
+    font-weight: 100 1000;
+    src: url(./fonts/GeistVF.ttf);
 }
 
 body {
@@ -107,10 +90,85 @@ form button {
     border-style: none;
     border-radius: 10px;
     color: #ef233c;
-    font-weight: bold;
+    font-weight: 500;
     font-size: 1.5rem;
 }
 
 form button:hover {
     border: 2px solid #ef233c;
 }
+
+main {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.open-sidebar-button {
+    width: 80px;
+    background-color: #d90429;
+    color: #edf2f4;
+    border-style: none;
+    height: 30px;
+    border-radius: 6px;
+}
+
+.books-grid {
+    width: 800px;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.book-card {
+    background-color: #2b2d42;
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+    padding: 10px;
+    gap: 5px;
+}
+
+.book-card > * {
+    color: #edf2f4;
+}
+
+.book-card span {
+    font-weight: 100;
+}
+
+.book-card .read-button {
+    font-weight: 300;
+    width: 80px;
+    padding: 3px;
+    border-style: none;
+}
+
+.green.read-button {
+    background-color: rgb(20, 184, 5);
+}
+
+.red.read-button {
+    background-color: #d90429;
+}
+
+.book-card button:last-child {
+    align-self: flex-end;
+    background: none;
+    border-style: none;
+    width: 26px;
+    height: 26px;
+}
+
+.book-card button span{ 
+    font-variation-settings: 'wght' 300;
+}
+
+.book-card button span:hover {
+    font-size: 26px;
+    transition:0.3s;
+}
+
