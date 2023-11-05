@@ -1,6 +1,54 @@
 const books = [];
 
-function Book (title, author, pages, read) {
+class Book {
+    constructor (title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+
+    info() {
+        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read ? 'read' : 'not read yet'}`
+    }
+
+    toggleRead() {
+        this.read = !this.read;
+    }
+
+    get title() {
+        return this._title;
+    }
+
+    set title(title) {
+        this._title = title
+    }
+
+    get author() {
+        return this._author;
+    }
+
+    set author(author) {
+        this._author = author
+    }
+
+    get pages() {
+        return this._pages;
+    }
+
+    set pages(pages) {
+        this._pages = pages
+    }
+
+    get read() {
+        return this._read;
+    }
+
+    set read(read) {
+        this._read = read
+    }
+}
+/*function Book (title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -13,7 +61,7 @@ function Book (title, author, pages, read) {
     this.toggleRead = function () {
         this.read = !this.read;
     }
-} 
+} */
 
 function createDeleteButton() {
     const $deleteButton = document.createElement('button');
